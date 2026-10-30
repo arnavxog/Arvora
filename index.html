@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b12">
+<meta name="description" content="ARVORA — your personal soundspace by Arnav Tiwari.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+<title>ARVORA — Feel Every Beat</title>
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div class="app-shell">
+<aside class="sidebar glass">
+<a class="brand" href="#" aria-label="ARVORA home"><span class="brand-mark">A</span><span>ARVORA<small>BY ARNAV TIWARI</small></span></a>
+<div class="nav-label">YOUR SPACE</div>
+<button class="nav-item active" data-view="home">⌂ <span>Home</span></button>
+<button class="nav-item" data-view="search">⌕ <span>Discover</span></button>
+<button class="nav-item" data-view="favorites">♡ <span>Liked songs</span></button>
+<button class="nav-item" data-view="local">♫ <span>My music</span></button>
+<div class="side-note"><span class="pulse"></span> YOUR SOUND. YOUR SPACE.</div>
+<div class="sidebar-bottom">A personal music experience<br><b>Made for every screen</b></div>
+</aside>
+<main class="main">
+<header class="topbar">
+<div class="mobile-brand"><span class="brand-mark">A</span> ARVORA</div>
+<div class="top-caption" id="connectionStatus">YOUR PERSONAL SOUNDSPACE</div>
+<button class="install-btn" id="installBtn" hidden>↓ Install app</button>
+<button class="icon-btn" id="themeBtn" title="Toggle ambience" aria-label="Toggle ambience">◐</button>
+</header>
+
+<section class="view active" id="homeView">
+<div class="hero">
+<div class="hero-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> THE SOUND OF YOU</div>
+<h1>Feel every beat.<br><em>Own every moment.</em></h1>
+<p>A calmer, more beautiful place for the music you love.</p>
+<div class="hero-actions"><button class="primary-btn" id="browseBtn">＋ Add your music</button><button class="secondary-btn" data-go="search">Explore music ↗</button></div>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-disc"><div class="disc-core">A<span>R</span></div></div><div class="floating-chip chip-top">✦ IMMERSIVE AUDIO</div><div class="floating-chip chip-bottom">MADE FOR YOUR MOOD</div></div>
+</div>
+<div class="section-heading"><div><div class="eyebrow">YOUR COLLECTION</div><h2>Made for your mood</h2></div><span class="muted" id="trackCount">0 tracks</span></div>
+<div class="quick-grid">
+<button class="quick-card q-liked" data-view="favorites"><span class="quick-icon">♡</span><b>Liked songs</b><small>Your personal favourites</small></button>
+<button class="quick-card q-local" data-view="local"><span class="quick-icon">♫</span><b>Local library</b><small>Music on this device</small></button>
+<button class="quick-card q-lyrics" id="lyricsQuick"><span class="quick-icon">≋</span><b>Synced lyrics</b><small>Follow every line</small></button>
+</div>
+<div class="section-heading recent-heading"><div><div class="eyebrow">PICK UP THE VIBE</div><h2>Recently added</h2></div></div>
+<div class="track-list" id="recentList"><div class="empty-state">Your music will appear here.<br><small>Add audio files to start listening.</small></div></div>
+</section>
+
+<section class="view" id="searchView">
+<div class="page-title"><div class="eyebrow">FIND YOUR NEXT FAVOURITE</div><h1>Discover<span>.</span></h1><p>Search a public music catalog or play music saved on this device.</p></div>
+<form class="search-box glass" id="searchForm"><span>⌕</span><input id="searchInput" placeholder="Search songs, artists or albums…" autocomplete="off"><button type="submit">Search</button></form>
+<div class="notice">Search results provide short previews when available. Full tracks and downloads require a licensed provider or your own audio files.</div>
+<div class="track-list" id="searchResults"><div class="empty-state">Search for an artist, song or album.</div></div>
+</section>
+
+<section class="view" id="favoritesView"><div class="page-title"><div class="eyebrow">THE ONES YOU LOVE</div><h1>Liked songs<span>.</span></h1><p>Your saved favourites, all in one place on this device.</p></div><div class="track-list" id="favoritesList"><div class="empty-state">Tap ♡ on a track to save it here.</div></div></section>
+
+<section class="view" id="localView">
+<div class="page-title"><div class="eyebrow">ON THIS DEVICE</div><h1>My music<span>.</span></h1><p>Play audio files you own or have permission to use.</p></div>
+<div class="upload-panel glass"><div class="upload-symbol">♫</div><div><b>Bring your music into ARVORA</b><p>Choose MP3, M4A, WAV, OGG or FLAC files from this device.</p></div><button class="primary-btn" id="chooseFilesBtn">Choose files</button><input id="fileInput" type="file" accept="audio/*,.flac" multiple hidden></div>
+<div class="track-list" id="localList"><div class="empty-state">No local tracks yet.</div></div>
+</section>
+
+<section class="view" id="lyricsView"><div class="lyrics-layout">
+<div class="lyrics-art-wrap"><div class="lyrics-art" id="lyricsArt">A</div><div class="eyebrow">NOW PLAYING</div><h2 id="lyricsTitle">Nothing playing</h2><p id="lyricsArtist">Choose a track to begin</p></div>
+<div class="lyrics-panel"><div class="eyebrow">SING ALONG</div><h2>Lyrics<span>.</span></h2><div class="lyrics-lines" id="lyricsLines"><p class="lyric-muted">Load an LRC lyrics file to see time-synced lines.</p></div><button class="secondary-btn" id="loadLrcBtn">Load .LRC lyrics file</button><input type="file" id="lrcInput" accept=".lrc,text/plain" hidden></div>
+</div></section>
+<footer>ARVORA <span>•</span> Built for the love of music <span class="footer-right">BY ARNAV TIWARI</span></footer>
+</main>
+</div>
+
+<nav class="mobile-nav" aria-label="Main navigation">
+<button class="active" data-view="home"><b>⌂</b><small>Home</small></button><button data-view="search"><b>⌕</b><small>Discover</small></button><button data-view="favorites"><b>♡</b><small>Liked</small></button><button data-view="local"><b>♫</b><small>My music</small></button>
+</nav>
+
+<div class="player glass" id="player">
+<div class="player-track"><div class="mini-art" id="miniArt">A</div><div class="player-meta"><b id="playerTitle">Nothing playing</b><small id="playerArtist">Choose a track</small></div><button class="like-btn" id="playerLike" title="Like track" aria-label="Like track">♡</button></div>
+<div class="player-center"><div class="controls"><button id="prevBtn" title="Previous" aria-label="Previous">↶</button><button class="play-btn" id="playBtn" title="Play" aria-label="Play">▶</button><button id="nextBtn" title="Next" aria-label="Next">↷</button></div><div class="timeline"><span id="currentTime">0:00</span><input type="range" id="seekBar" min="0" max="1000" value="0" aria-label="Seek"><span id="duration">0:00</span></div></div>
+<div class="player-extra"><button class="icon-btn" id="lyricsBtn" title="Lyrics" aria-label="Lyrics">≋</button><button class="icon-btn" id="volumeBtn" title="Mute/unmute" aria-label="Mute or unmute">◖</button><input type="range" id="volumeBar" min="0" max="1" step=".01" value=".8" aria-label="Volume"></div>
+<audio id="audio" preload="none"></audio>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./app.js" defer></script>
+</body></html>
