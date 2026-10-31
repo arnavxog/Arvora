@@ -170,7 +170,7 @@ fun HomeScreen(
             // as their own free-floating row in the scroll content below,
             // same as the original layout.
             ExpressiveHeader(
-                title = "LastWave",
+                title = "AURVYN",
                 actions = {
                     HeaderActionIcon(Icons.Filled.Explore, "Discover", onOpenDiscover)
                     HeaderActionIcon(Icons.Filled.Search, "Search", onOpenSearch)
