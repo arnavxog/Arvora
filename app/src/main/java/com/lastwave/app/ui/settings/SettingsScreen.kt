@@ -1100,6 +1100,7 @@ private fun AboutCard(versionName: String) {
             }
             Spacer(Modifier.height(14.dp))
             Text("AURVYN", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+            Text("by Arnav Tiwari", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(8.dp))
             Surface(
                 shape = ExpressivePillShape,
