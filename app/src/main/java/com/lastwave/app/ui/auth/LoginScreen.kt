@@ -44,7 +44,7 @@ import com.lastwave.app.data.model.AuthState
 import com.lastwave.app.ui.theme.ExpressivePillShape
 
 /**
- * Real one-tap sign-in: tap Connect, approve LastWave in the system
+ * Real one-tap sign-in: tap Connect, approve AURVYN in the system
  * browser (Chrome Custom Tabs — the actual installed Chrome/default
  * browser, with its own saved passwords and autofill, not a bare WebView
  * this app draws itself), done. No API key, secret, username, or password
@@ -112,7 +112,7 @@ fun LoginScreen(
                     )
                 }
             }
-            Text("LastWave", style = MaterialTheme.typography.headlineMedium)
+            Text("AURVYN", style = MaterialTheme.typography.headlineMedium)
             Text(
                 "Connect your Last.fm account to get started",
                 style = MaterialTheme.typography.bodyMedium,
