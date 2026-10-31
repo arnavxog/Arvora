@@ -1,0 +1,61 @@
+name: Import AURVYN Android source
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Unpack Android project into repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f AURVYN-Android-source.zip
+          mkdir -p _aurvyn_unpack
+          unzip -q AURVYN-Android-source.zip -d _aurvyn_unpack
+          SETTINGS_FILE="$(find _aurvyn_unpack -type f \\( -name settings.gradle -o -name settings.gradle.kts \\) -print -quit)"
+          if [ -z "$SETTINGS_FILE" ]; then
+            echo "Could not find settings.gradle or settings.gradle.kts in the ZIP."
+            exit 1
+          fi
+          PROJECT_DIR="$(dirname "$SETTINGS_FILE")"
+          echo "Importing project from: $PROJECT_DIR"
+          rsync -a --exclude='.git/' --exclude='.github/workflows/import-aurvyn.yml' "$PROJECT_DIR/" ./
+          rm -rf _aurvyn_unpack
+          chmod +x ./gradlew
+
+      - name: Commit imported source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Import AURVYN Android project source"
+            git push
+          fi
+
+      - name: Build debug APK
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AURVYN-debug-APK
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
