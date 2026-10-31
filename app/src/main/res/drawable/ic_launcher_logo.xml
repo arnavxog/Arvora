@@ -1,26 +1,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-    <!-- Same source geometry as ic_launcher_foreground.xml, scaled to the
-         true logo proportions (bars nearly touching the circle edge)
-         instead of the adaptive-icon safe zone. For in-app use only —
-         anywhere the OS itself renders the launcher icon (home screen,
-         app switcher, settings' app info page) already uses
-         ic_launcher_foreground via the adaptive-icon XMLs; this drawable
-         is for contexts like the About card where we're drawing the mark
-         ourselves and want it pixel-accurate to the source artwork. -->
-    <path
-        android:fillColor="#012226"
-        android:pathData="M12.92,36.47 A5.99,5.99 0 0 1 24.89,36.47 L24.89,78.39 A5.99,5.99 0 0 1 12.92,78.39 Z" />
-    <path
-        android:fillColor="#012226"
-        android:pathData="M36.86,16.58 A6.14,6.14 0 0 1 49.15,16.58 L49.15,92.58 A6.14,6.14 0 0 1 36.86,92.58 Z" />
-    <path
-        android:fillColor="#012226"
-        android:pathData="M60.54,23.12 A6.25,6.25 0 0 1 73.04,23.12 L73.04,84.82 A6.25,6.25 0 0 1 60.54,84.82 Z" />
-    <path
-        android:fillColor="#012226"
-        android:pathData="M80.74,33.72 A6.72,6.72 0 0 1 94.18,33.72 L94.18,74.17 A6.72,6.72 0 0 1 80.74,74.17 Z" />
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#012226"
+        android:pathData="M49,10 C51,6 57,6 59,10 L98,87 C101,93 97,100 90,100 L78,100 C75,100 72,98 70,94 L54,60 L38,94 C36,98 33,100 30,100 L18,100 C11,100 7,93 10,87 Z"/>
+    <path android:fillColor="#FFC9FB00" android:pathData="M54,48 L69,81 L39,81 Z"/>
+    <path android:fillColor="#012226" android:pathData="M37,73 L71,73 L76,83 L32,83 Z"/>
 </vector>
